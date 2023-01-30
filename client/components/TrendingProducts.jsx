@@ -10,7 +10,9 @@ const TrendingProducts = () => {
   return (
     <>
       {loading ? (
-        "loading"
+        <h3 className="h-[70vh] text-center py-10 font-semibold">
+          loading items
+        </h3>
       ) : (
         <div className="px-5 lg:px-10 py-5">
           <h2 className="font-bold text-2xl py-4 text-center">
@@ -22,7 +24,7 @@ const TrendingProducts = () => {
               element.attributes.trendingProducts ? (
                 <div
                   key={id}
-                  onClick={() => router.push(`product/${id}`)}
+                  onClick={() => router.push(`product/${element.id}`)}
                   className="flex flex-col items-center"
                 >
                   <div className="h-[200px] w-[150px] md:h-[230px] md:w-[180px] lg:h-[400px] lg:w-[250px]  mx-auto relative cursor-pointer ">

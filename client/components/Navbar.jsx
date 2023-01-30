@@ -15,6 +15,13 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [burger, setBurger] = useState(false);
 
+  const NavMenu = [
+    { value: "Woman", category: "woman" },
+    { value: "Man", category: "Man" },
+    { value: "Shoes", category: "shoes" },
+    { value: "Accessory", category: "accessory" },
+  ];
+
   return (
     <>
       {/*big size screen*/}
@@ -22,61 +29,22 @@ const Navbar = () => {
         {/*left side*/}
         <div className="flex items-center basis-1/3">
           <div className="flex  mx-2  text-lg font-medium">
-            <p
-              onClick={() => {
-                router.push({
-                  pathname: "/products",
-                  query: { category: "woman" },
-                });
-                setBurger(false);
-                setOpen(false);
-              }}
-              className="rounded-2xl px-4 cursor-pointer hover:bg-slate-100 transition ease-in-out duration-150"
-            >
-              Woman
-            </p>
-
-            <p
-              onClick={() => {
-                router.push({
-                  pathname: "/products",
-                  query: { category: "man" },
-                });
-                setBurger(false);
-                setOpen(false);
-              }}
-              className="rounded-2xl px-4 cursor-pointer hover:bg-slate-100 transition ease-in-out duration-150"
-            >
-              Man
-            </p>
-
-            <p
-              onClick={() => {
-                router.push({
-                  pathname: "/products",
-                  query: { category: "shoes" },
-                });
-                setBurger(false);
-                setOpen(false);
-              }}
-              className="rounded-2xl px-4 cursor-pointer hover:bg-slate-100 transition ease-in-out duration-150"
-            >
-              Shoes
-            </p>
-
-            <p
-              onClick={() => {
-                router.push({
-                  pathname: "/products",
-                  query: { category: "accessory" },
-                });
-                setBurger(false);
-                setOpen(false);
-              }}
-              className="rounded-2xl px-4 cursor-pointer hover:bg-slate-100 transition ease-in-out duration-150"
-            >
-              Accessory
-            </p>
+            {NavMenu.map((item, id) => (
+              <p
+                key={id}
+                onClick={() => {
+                  router.push({
+                    pathname: "/products",
+                    query: { category: item.category },
+                  });
+                  setBurger(false);
+                  setOpen(false);
+                }}
+                className="rounded-2xl px-4 cursor-pointer hover:bg-slate-100 transition ease-in-out duration-150"
+              >
+                {item.value}
+              </p>
+            ))}
           </div>
         </div>
         {/*center*/}
@@ -153,84 +121,22 @@ const Navbar = () => {
       {burger && (
         <div className="absolute bg-white z-50 right-0 w-[50%] flex flex-col gap-3 py-4 px-4 border drop-shadow-xl rounded-xl">
           <h2 className="font-bold text-lg">CATEGORIES</h2>
-          <span
-            onClick={() => {
-              router.push({
-                pathname: "/products",
-                query: { category: "woman" },
-              });
-              setBurger(false);
-              setOpen(false);
-            }}
-            className="font-semibold italic cursor-pointer"
-          >
-            Woman
-          </span>
-          <span
-            onClick={() => {
-              router.push({
-                pathname: "/products",
-                query: { category: "man" },
-              });
-              setBurger(false);
-              setOpen(false);
-            }}
-            className="font-semibold italic cursor-pointer"
-          >
-            Man
-          </span>
-          <span
-            onClick={() => {
-              router.push({
-                pathname: "/products",
-                query: { category: "shoes" },
-              });
-              setBurger(false);
-              setOpen(false);
-            }}
-            className="font-semibold italic cursor-pointer"
-          >
-            Shoes
-          </span>
-          <span
-            onClick={() => {
-              router.push({
-                pathname: "/products",
-                query: { category: "accessory" },
-              });
-              setBurger(false);
-              setOpen(false);
-            }}
-            className="font-semibold italic cursor-pointer"
-          >
-            Accessory
-          </span>
-          <span
-            onClick={() => {
-              router.push({
-                pathname: "/products",
-                query: { category: "isNew" },
-              });
-              setBurger(false);
-              setOpen(false);
-            }}
-            className="font-semibold italic cursor-pointer"
-          >
-            New Season
-          </span>
-          <span
-            onClick={() => {
-              router.push({
-                pathname: "/products",
-                query: { category: "onSale" },
-              });
-              setBurger(false);
-              setOpen(false);
-            }}
-            className="font-semibold italic cursor-pointer"
-          >
-            Sale
-          </span>
+          {NavMenu.map((item, id) => (
+            <p
+              key={id}
+              onClick={() => {
+                router.push({
+                  pathname: "/products",
+                  query: { category: item.category },
+                });
+                setBurger(false);
+                setOpen(false);
+              }}
+              className="font-semibold italic cursor-pointer"
+            >
+              {item.value}
+            </p>
+          ))}
         </div>
       )}
     </>

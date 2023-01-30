@@ -16,13 +16,15 @@ const List = ({ maxPrice, sort, cat, isNew, onSale }) => {
   return (
     <>
       {loading ? (
-        "loading"
+        <h3 className="h-[70vh] text-center py-10 font-semibold">
+          loading items
+        </h3>
       ) : (
         <div className="flex flex-wrap justify-center py-4 gap-6">
           {products.map((element, id) => (
             <div
               key={id}
-              onClick={() => router.push(`/product/${element.id - 1}`)}
+              onClick={() => router.push(`/product/${element.id}`)}
               className="flex flex-col items-center"
             >
               <div className="h-[200px] w-[150px] md:h-[230px] md:w-[180px] lg:h-[250px] lg:w-[190px]  mx-auto relative cursor-pointer ">

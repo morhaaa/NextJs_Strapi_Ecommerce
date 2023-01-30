@@ -23,13 +23,17 @@ const Product = () => {
   return (
     <>
       {loading ? (
-        <h3 className="h-[70vh] w-screen text-center">loading</h3>
+        <h3 className="h-[70vh] text-center py-10 font-semibold">
+          loading items
+        </h3>
       ) : (
         <>
           {products.map((element, id) =>
-            id == `${idQuery}` ? (
+            element.id == `${idQuery}` ? (
               <div key={id} className="flex md:flex-row flex-col gap-2  py-5">
                 {" "}
+                {console.log(element.id)}
+                {console.log(idQuery)}
                 <div className="basis-2/12 items-center justify-center md:justify-start  flex md:flex-col gap-4 md:gap-6 ">
                   <div className="h-[170px] w-[150px]  md:h-[200px] md:w-[175px]l g:h-[220px] lg:w-[200px] relative">
                     <Image
